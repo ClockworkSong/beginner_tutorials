@@ -50,6 +50,7 @@ find_package(catkin REQUIRED COMPONENTS
 ## Generate messages in the 'msg' folder
 add_message_files(
   FILES
+  BoundingBox.msg
   Num.msg
 )
 
@@ -148,6 +149,20 @@ include_directories(
 # target_link_libraries(${PROJECT_NAME}_node
 #   ${catkin_LIBRARIES}
 # )
+
+add_executable(add_two_ints_client src/add_two_ints_client.cpp)
+target_link_libraries(add_two_ints_client ${catkin_LIBRARIES})
+
+add_executable(add_two_ints_server src/add_two_ints_server.cpp)
+target_link_libraries(add_two_ints_server ${catkin_LIBRARIES})
+
+include_directories(${catkin_INCLUDE_DIRS})
+add_executable(listener src/listener.cpp)
+target_link_libraries(listener ${catkin_LIBRARIES})
+
+include_directories(${catkin_INCLUDE_DIRS})
+add_executable(talker src/talker.cpp)
+target_link_libraries(talker ${catkin_LIBRARIES})
 
 #############
 ## Install ##
